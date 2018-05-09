@@ -1,1 +1,3 @@
-console.table({sad: 23});
+const s = 234;
+
+alert(s);
