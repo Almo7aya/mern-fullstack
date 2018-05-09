@@ -4,7 +4,7 @@
   "description": "",
   "main": "servers.js",
   "scripts": {
-    "start": "nodmon --exec babel-node server.js --ignore ./public",
+    "start": "nodemon --exec babel-node server.js --ignore ./public",
     "dev": "webpack -wd"
   },
   "keywords": [],
