@@ -3,8 +3,8 @@
         "env"
     ],
     "plugins": [
-        ["tarnsform-react-jsx", {
-            "pargma": "h"
+        ["transform-react-jsx", {
+            "pragma": "h"
         }],
         "syntax-jsx"
     ]

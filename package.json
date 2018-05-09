@@ -1,9 +1,12 @@
 {
-  "name": "Mern",
+  "name": "mern",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "main": "servers.js",
+  "scripts": {
+    "start": "nodmon --exec babel-node server.js --ignore ./public",
+    "dev": "webpack -wd"
+  },
   "keywords": [],
   "author": "Ali Almohaya <alialmohaya@gmail.com>",
   "license": "ISC",
