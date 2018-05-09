@@ -2,7 +2,9 @@ import { Router } from 'express';
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.end('Hello');
+  res.render('index', {
+    content: 'babel is rocks'
+  });
 });
 
 export default router;
