@@ -1,0 +1,1 @@
+console.table({sad: 23});
