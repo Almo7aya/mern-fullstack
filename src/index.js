@@ -1,4 +1,7 @@
-const sd = 3;
-console.warn();
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log()
+ReactDOM.render(
+  React.createElement('p', null, 'hello form react'),
+  document.getElementById('root')
+);

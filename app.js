@@ -4,6 +4,10 @@ const app = express();
 // import routes
 import indexRoutes from './routes/index';
 
+
+// template engine
+app.set('view engine', 'ejs');
+
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
