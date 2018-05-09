@@ -1,0 +1,11 @@
+{
+    "presets": [
+        "env"
+    ],
+    "plugins": [
+        ["tarnsform-react-jsx", {
+            "pargma": "h"
+        }],
+        "syntax-jsx"
+    ]
+}
