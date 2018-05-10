@@ -1,16 +1,19 @@
 import { Router } from 'express';
 const router = Router();
 
+import serverRender from '../serverRender/render';
+
 router.get('/', (req, res) => {
-  res.render('index', {
-    content: 'babel is rocks'
-  });
+  serverRender().then( content => {
+    res.render('index', {
+      content
+    });
+  })
 });
 
 
 router.get('/api/package', (req, res) => {
   res.json(require('../package.json'));
 });
-
 
 export default router;
