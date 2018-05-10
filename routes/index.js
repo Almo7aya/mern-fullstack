@@ -4,9 +4,10 @@ const router = Router();
 import serverRender from '../serverRender/render';
 
 router.get('/', (req, res) => {
-  serverRender().then( content => {
+  serverRender().then( ({markup, initData}) => {
     res.render('index', {
-      content
+      markup,
+      initData
     });
   })
 });

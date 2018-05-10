@@ -8,7 +8,10 @@ import App from '../src/components/App';
 const serverRender = () =>
   axios({url: `${config.hostUrl}/api/package`})
     .then(({data}) =>
-      ReactDOMServer.renderToString(<App initPackages={data}/>)
+      ({
+        markup: ReactDOMServer.renderToString(<App initPackages={data}/>),
+        initData: data
+      })
     ).catch(console.log);
 
 export default serverRender;
