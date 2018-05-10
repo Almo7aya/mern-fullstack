@@ -4,10 +4,10 @@ import nodeSass from 'node-sass-middleware';
 
 const app = express();
 
-
 // import routes
 import indexRoutes from './routes/index';
 
+import server from './serverRender/render';
 
 // template engine
 app.set('view engine', 'ejs');

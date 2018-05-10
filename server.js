@@ -6,7 +6,7 @@ const server = http.createServer(app);
 
 
 
-server.listen(config.port);
+server.listen(config.port, config.host);
 
 server.on('listening', () =>
   process.stdout.write(`server is running at port ${config.port}`));
