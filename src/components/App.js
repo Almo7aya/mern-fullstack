@@ -3,11 +3,11 @@ import axios from 'axios';
 import Package from './Package';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: 'react app',
-      packages: null
+      packages: this.props.initPackages || null
     };
   }
 
