@@ -7,4 +7,10 @@ router.get('/', (req, res) => {
   });
 });
 
+
+router.get('/api/package', (req, res) => {
+  res.json(require('../package.json'));
+});
+
+
 export default router;

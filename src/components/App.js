@@ -1,17 +1,24 @@
 import React from 'react';
-
+import axios from 'axios';
 import Package from './Package';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: 'react app'
+      name: 'react app',
+      packages: null
     };
   }
 
   componentDidMount() {
-    console.log('mounted');
+    axios.get('/api/package')
+      .then(({data}) => {
+        this.setState({
+          packages: data
+        })
+      })
+      .catch(console.log);
   }
 
   componentWillUnmount() {
@@ -19,46 +26,55 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div className='content'>
-      <h2 className='title'>Hello {this.props.packages.author}</h2>
-      <div className='columns'>
-        <h3 className='column'>Your main packages</h3>
-        <h3 className='column'>Your dev packages</h3>
-      </div>
-      <div className='columns'>
-        <table className='is-bordered table column'>
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Version</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-            Object.entries(this.props.packages.dependencies).map(([name, version], index) => (
-              <Package name={name} version={version} key={index}/>
-            ))
-          }
-          </tbody>
-        </table>
-        <table className='is-bordered table column'>
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Version</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-            Object.entries(this.props.packages.devDependencies).map(([name, version], index) => (
-              <Package name={name} version={version} key={index}/>
-            ))
-          }
-          </tbody>
-        </table>
-      </div>
 
-    </div>);
+    if (this.state.packages) {
+      return (<div className='content'>
+        {
+            <div>
+              <h2 className='title'>Hello {this.state.packages.author}</h2>
+              <div className='columns'>
+                <h3 className='column'>Your main packages</h3>
+                <h3 className='column'>Your dev packages</h3>
+              </div>
+              <div className='columns'>
+                <table className='is-bordered table column'>
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    Object.entries(this.state.packages.dependencies).map(([name, version], index) => (
+                      <Package name={name} version={version} key={Math.random()}/>
+                    ))
+                  }
+                  </tbody>
+                </table>
+                <table className='is-bordered table column'>
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    Object.entries(this.state.packages.devDependencies).map(([name, version], index) => (
+                      <Package name={name} version={version} key={Math.random()}/>
+                    ))
+                  }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        }
+      </div>);
+    } else {
+      return (<div>Loading...</div>)
+    }
+
   }
 }
 
