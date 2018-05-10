@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Package from './Package';
 
 class App extends React.Component {
@@ -12,13 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/package')
-      .then(({data}) => {
-        this.setState({
-          packages: data
-        })
-      })
-      .catch(console.log);
+
   }
 
   componentWillUnmount() {
@@ -26,7 +19,6 @@ class App extends React.Component {
   }
 
   render() {
-
     if (this.state.packages) {
       return (<div className='content'>
         {
