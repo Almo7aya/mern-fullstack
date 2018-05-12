@@ -7,16 +7,6 @@ export default class PackageList extends React.Component {
     super(props);
   }
     
-  fetchContent(packageName) {
-    history.pushState(
-      {
-        currentPackageName: packageName
-      },
-      packageName
-      ,
-      `/package/${packageName}`
-    );
-  }
 
   render() {
     return (<table className='is-bordered table column'>
@@ -29,7 +19,7 @@ export default class PackageList extends React.Component {
       <tbody>
         {
           Object.entries(this.props.packages).map(([name, version]) => (
-            <Package name={name} version={version} onClick={this.fetchContent} key={Math.random()} />
+            <Package name={name} version={version} onClick={this.props.fetch} key={Math.random()} />
           ))
         }
       </tbody>
@@ -38,5 +28,6 @@ export default class PackageList extends React.Component {
 }
 
 PackageList.propTypes = {
-  packages: propTypes.object
+  packages: propTypes.object,
+  fetch: propTypes.func
 };

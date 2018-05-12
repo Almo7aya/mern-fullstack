@@ -1,6 +1,11 @@
 import React from 'react';
-const PackagePreview = () => (
+import propTypes from 'prop-types';
+const PackagePreview = ({content}) => (
   <div>
-    PackagePreview
+    {content}
   </div>);
 export default PackagePreview;
+
+PackagePreview.propTypes = {
+  content: propTypes.string
+};

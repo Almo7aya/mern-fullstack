@@ -4,6 +4,7 @@
     ],
     "plugins": [
         "transform-react-jsx",
-        "syntax-jsx"
+        "syntax-jsx",
+        "transform-class-properties"
     ]
 }
