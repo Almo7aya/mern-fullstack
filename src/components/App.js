@@ -17,6 +17,10 @@ class App extends React.Component {
   componentWillUnmount() {
   }
 
+  onPackageCliked(packageName) {
+    console.log(packageName);
+  }
+
   render() {
     if (this.state.packages) {
       return (<div className='content'>
@@ -38,7 +42,7 @@ class App extends React.Component {
                 <tbody>
                   {
                     Object.entries(this.state.packages.dependencies).map(([name, version]) => (
-                      <Package name={name} version={version} key={Math.random()} />
+                      <Package name={name} version={version} onClick={this.onPackageCliked} key={Math.random()} />
                     ))
                   }
                 </tbody>
@@ -53,7 +57,7 @@ class App extends React.Component {
                 <tbody>
                   {
                     Object.entries(this.state.packages.devDependencies).map(([name, version]) => (
-                      <Package name={name} version={version} key={Math.random()} />
+                      <Package name={name} version={version} onClick={this.onPackageCliked} key={Math.random()} />
                     ))
                   }
                 </tbody>
