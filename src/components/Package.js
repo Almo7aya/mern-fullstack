@@ -1,5 +1,5 @@
 import React from 'react';
-
+import propTypes from 'prop-types';
 const Package = ({name, version}) => (
   <tr>
     <td>{name}</td>
@@ -7,5 +7,9 @@ const Package = ({name, version}) => (
   </tr>
 );
 
+Package.propTypes = {
+  name: propTypes.string,
+  version: propTypes.string
+};
 
 export default Package;
