@@ -1,5 +1,5 @@
 import React from 'react';
-import Package from './Package';
+import PackageList from './PackageList';
 import propTypes from 'prop-types';
 
 class App extends React.Component {
@@ -17,9 +17,6 @@ class App extends React.Component {
   componentWillUnmount() {
   }
 
-  onPackageCliked(packageName) {
-    console.log(packageName);
-  }
 
   render() {
     if (this.state.packages) {
@@ -32,36 +29,8 @@ class App extends React.Component {
               <h3 className='column'>Your dev packages</h3>
             </div>
             <div className='columns'>
-              <table className='is-bordered table column'>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Version</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    Object.entries(this.state.packages.dependencies).map(([name, version]) => (
-                      <Package name={name} version={version} onClick={this.onPackageCliked} key={Math.random()} />
-                    ))
-                  }
-                </tbody>
-              </table>
-              <table className='is-bordered table column'>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Version</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    Object.entries(this.state.packages.devDependencies).map(([name, version]) => (
-                      <Package name={name} version={version} onClick={this.onPackageCliked} key={Math.random()} />
-                    ))
-                  }
-                </tbody>
-              </table>
+              <PackageList packages={this.state.packages.dependencies} />
+              <PackageList packages={this.state.packages.devDependencies} />
             </div>
           </div>
         }
